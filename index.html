@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>CODEX STUDIO — Coming Soon</title>
+  <link rel="icon" type="image/jpeg" href="assets/codex-studio-logo.jpg">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="bg"></div>
+
+  <main class="card">
+    <img src="assets/codex-studio-logo.jpg" alt="CODEX STUDIO" class="logo">
+
+    <h1>COMING SOON</h1>
+    <p class="subtitle">CODEX STUDIO · ESTUDIO INDEPENDIENTE</p>
+
+    <div class="countdown" id="countdown">
+      <div class="time-box">
+        <span class="num" id="days">00</span>
+        <span class="label">DÍAS</span>
+      </div>
+      <div class="time-box">
+        <span class="num" id="hours">00</span>
+        <span class="label">HORAS</span>
+      </div>
+      <div class="time-box">
+        <span class="num" id="mins">00</span>
+        <span class="label">MIN</span>
+      </div>
+      <div class="time-box">
+        <span class="num" id="secs">00</span>
+        <span class="label">SEG</span>
+      </div>
+    </div>
+
+    <p class="desc">
+      Estamos preparando algo grande.<br>
+      El 29 de octubre se viene.
+    </p>
+
+    <a href="#" class="discord-btn" target="_blank" rel="noopener">
+      <span class="discord-icon">⌨</span>
+      ÚNETE AL DISCORD
+    </a>
+
+    <p class="footer-text">© 2026 CODEX STUDIO</p>
+  </main>
+
+  <script>
+    // Contador hasta el 29 de octubre de 2026 (medianoche)
+    const target = new Date('2026-10-29T00:00:00').getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = target - now;
+
+      if (distance < 0) {
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('mins').textContent = '00';
+        document.getElementById('secs').textContent = '00';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = String(days).padStart(2, '0');
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('mins').textContent = String(mins).padStart(2, '0');
+      document.getElementById('secs').textContent = String(secs).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+  </html>
